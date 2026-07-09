@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#79a6ff" />
+    <title>Mineclon — a voxel sandbox</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23795c3f'/><rect width='16' height='5' fill='%236aa84f'/></svg>" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <!-- In-world overlays -->
+    <div id="underwater" class="fullscreen-tint"></div>
+    <div id="damage-flash" class="fullscreen-tint"></div>
+
+    <!-- HUD -->
+    <div id="hud" hidden>
+      <div id="crosshair"></div>
+
+      <div id="debug" hidden></div>
+
+      <div id="hotbar-wrap">
+        <div id="held-name"></div>
+        <div id="hotbar"></div>
+      </div>
+
+      <div id="toast"></div>
+    </div>
+
+    <!-- Inventory -->
+    <div id="inventory" class="modal" hidden>
+      <div class="panel">
+        <header>
+          <h2>Creative Inventory</h2>
+          <p>Click a block to put it in the selected hotbar slot · <kbd>E</kbd> / <kbd>Esc</kbd> to close</p>
+        </header>
+        <div id="inventory-grid"></div>
+      </div>
+    </div>
+
+    <!-- Pause / start menu -->
+    <div id="menu" class="modal">
+      <div class="panel menu-panel">
+        <h1>MINECLON</h1>
+        <p class="tagline">An infinite voxel world, built from scratch.</p>
+
+        <div id="menu-buttons">
+          <button id="btn-play" class="primary">Play</button>
+          <button id="btn-regen">New World</button>
+          <button id="btn-reset">Reset Saved Changes</button>
+        </div>
+
+        <div class="controls">
+          <h3>Controls</h3>
+          <ul>
+            <li><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Move</li>
+            <li><kbd>Space</kbd> Jump / swim up</li>
+            <li><kbd>Shift</kbd> Sneak (or descend while flying)</li>
+            <li><kbd>Ctrl</kbd> Sprint</li>
+            <li><kbd>Space</kbd><kbd>Space</kbd> Toggle flight</li>
+            <li><kbd>Left click</kbd> Break block</li>
+            <li><kbd>Right click</kbd> Place block</li>
+            <li><kbd>Middle click</kbd> Pick block</li>
+            <li><kbd>1</kbd>–<kbd>9</kbd> / <kbd>Scroll</kbd> Select slot</li>
+            <li><kbd>E</kbd> Inventory</li>
+            <li><kbd>F3</kbd> Debug overlay</li>
+            <li><kbd>F5</kbd> Cycle camera</li>
+            <li><kbd>T</kbd> Toggle time / <kbd>N</kbd> Freeze time</li>
+            <li><kbd>Esc</kbd> Pause</li>
+          </ul>
+        </div>
+
+        <div class="seed-row">
+          <label for="seed-input">Seed</label>
+          <input id="seed-input" type="text" spellcheck="false" />
+        </div>
+
+        <footer id="menu-footer">Loading…</footer>
+      </div>
+    </div>
+
+    <div id="loading">
+      <div class="loading-inner">
+        <div class="loading-title">Generating world…</div>
+        <div class="loading-bar"><div class="loading-fill"></div></div>
+      </div>
+    </div>
+
+    <noscript>
+      <p style="color: #fff; font: 16px sans-serif; padding: 24px">
+        Mineclon needs JavaScript and WebGL2 to run.
+      </p>
+    </noscript>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
